@@ -1,0 +1,96 @@
+retailer_name,category,product,selling_unit,quantity,per_unit_price
+ABC Retailer,Vegetables,"Beans, Green - conventional",case (24 x 1 lb. bags),2,5.054
+ABC Retailer,Vegetables,"Beans, Green - conventional",1/2 case (12 lbs. bulk),5,2.527
+ABC Retailer,Vegetables,"Beans, Green - conventional",1/2 case (12 x 1 lb. bags),4,2.527
+ABC Retailer,Vegetables,"Beans, Green - conventional",lbs. bulk,70,0.211
+ABC Retailer,Vegetables,"Beans, Green - conventional",1 lb. bags,50,0.211
+ABC Retailer,Vegetables,"Beans, Green - conventional",case (24 lbs. bulk),0,5.054
+ABC Retailer,Vegetables,"Beans, Yellow - conventional",case (24 lbs. bulk),2,6.009
+ABC Retailer,Vegetables,"Beans, Yellow - conventional",case (24 x 1 lb. bags),2,6.009
+ABC Retailer,Vegetables,"Beans, Yellow - conventional",1/2 case (12 lbs. bulk),4,3.005
+ABC Retailer,Vegetables,"Beans, Yellow - conventional",1/2 case (12 x 1 lb. bags),4,3.005
+ABC Retailer,Vegetables,"Beans, Yellow - conventional",lbs. bulk,56,0.25
+ABC Retailer,Vegetables,"Beans, Yellow - conventional",1 lb. bags,56,0.25
+ABC Retailer,Vegetables,"Beans, Green - chemical free",case (24 lbs. bulk),6,5.054
+ABC Retailer,Vegetables,"Beans, Green - chemical free",case (24 x 1 lb. bags),6,5.054
+ABC Retailer,Vegetables,"Beans, Green - chemical free",1/2 case (12 lbs. bulk),12,2.527
+ABC Retailer,Vegetables,"Beans, Green - chemical free",1/2 case (12 x 1 lb. bags),12,2.527
+ABC Retailer,Vegetables,"Beans, Green - chemical free",lbs. bulk,150,0.211
+ABC Retailer,Vegetables,"Beans, Green - chemical free",1 lb. bags,150,0.211
+ABC Retailer,Vegetables,"Beans, Yellow - chemical free",case (24 lbs. bulk),1,6.009
+ABC Retailer,Vegetables,"Beans, Yellow - chemical free",case (24 x 1 lb. bags),1,6.009
+ABC Retailer,Vegetables,"Beans, Yellow - chemical free",1/2 case (12 lbs. bulk),2,3.005
+ABC Retailer,Vegetables,"Beans, Yellow - chemical free",1/2 case (12 x 1 lb. bags),2,3.005
+ABC Retailer,Vegetables,"Beans, Yellow - chemical free",lbs. bulk,34,0.25
+ABC Retailer,Vegetables,"Beans, Yellow - chemical free",1 lb. bags,34,0.25
+ABC Retailer,Vegetables,Broccoli - conventional,case (18 lb. bulk),1,3.264
+ABC Retailer,Vegetables,Broccoli - conventional,each (min. 1 lb.),24,0.181
+ABC Retailer,Vegetables,Broccoli - conventional,each (approx 0.75-1 lb.),24,0.17
+ABC Retailer,Vegetables,Broccoli - conventional,lbs. bulk,24,0.181
+ABC Retailer,Vegetables,"Corn, Sweet - conventional",case (4 dozen),2,1.287
+ABC Retailer,Vegetables,"Corn, Sweet - conventional",dozen,10,0.322
+ABC Retailer,Vegetables,"Cucumber, European Burpless - conventional",case (48 ct.),0,4.493
+ABC Retailer,Vegetables,"Cucumber, European Burpless - conventional",1/2 case (24 ct.),0,2.246
+ABC Retailer,Vegetables,"Cucumber, European Burpless - conventional",each,20,0.094
+ABC Retailer,Vegetables,"Cucumber, Pickling - conventional",lbs. bulk,10,0.187
+ABC Retailer,Vegetables,"Cucumber, Slicing - chemical free",case (48 ct.),2,2.864
+ABC Retailer,Vegetables,"Cucumber, Slicing - chemical free",1/2 case (24 ct.),6,1.432
+ABC Retailer,Vegetables,"Cucumber, Slicing - chemical free",each,152,0.06
+ABC Retailer,Vegetables,"Cucumber, Slicing - conventional",case (48 ct.),0,2.527
+ABC Retailer,Vegetables,"Cucumber, Slicing - conventional",1/2 case (24 ct.),0,1.264
+ABC Retailer,Vegetables,"Cucumber, Slicing - conventional",each,20,0.053
+ABC Retailer,Vegetables,"Garlic, Heads - chemical free",lbs. bulk,15,0.462
+ABC Retailer,Vegetables,"Chard, Rainbow - chemical free",case (3 lbs. bulk),2,1.127
+ABC Retailer,Vegetables,"Chard, Rainbow - chemical free",lbs. bulk,8,0.376
+ABC Retailer,Vegetables,"Chard, Rainbow - chemical free",1/2 lb. bunch,16,0.188
+ABC Retailer,Vegetables,"Kale, Curly - chemical free",case (3 lbs. bulk),3,1.127
+ABC Retailer,Vegetables,"Kale, Curly - chemical free",1/2 lb. bunch,20,0.188
+ABC Retailer,Vegetables,"Kale, Curly - chemical free",lbs. bulk,10,0.376
+ABC Retailer,Vegetables,"Kale, Lacinato (Dinosaur) - chemical free",case (3 lbs. bulk),1,1.127
+ABC Retailer,Vegetables,"Kale, Lacinato (Dinosaur) - chemical free",lbs. bulk,3,0.376
+ABC Retailer,Vegetables,"Kale, Lacinato (Dinosaur) - chemical free",1/2 lb. bunch,6,0.188
+ABC Retailer,Vegetables,Horseradish - chemical free,lbs. bulk,3,0.538
+ABC Retailer,Vegetables,"Kohlrabi, Green - chemical free",lbs. bulk,50,0.257
+ABC Retailer,Vegetables,"Onions, Candy (sweet yellow) - chemical free",case (25 lbs. bulk),0,2.34
+ABC Retailer,Vegetables,"Onions, Candy (sweet yellow) - chemical free",lbs. bulk,15,0.094
+ABC Retailer,Vegetables,"Onions, Candy (sweet yellow) - chemical free",case (12 x 2 lb. bags),0,2.246
+ABC Retailer,Vegetables,"Onions, Candy (sweet yellow) - chemical free",2 lb. bags,7,0.187
+ABC Retailer,Vegetables,"Pepper, Green, Bell - chemical free",case (30 ct.),1,1.79
+ABC Retailer,Vegetables,"Pepper, Green, Bell - chemical free",1/2 case (15 ct.),2,0.895
+ABC Retailer,Vegetables,"Pepper, Green, Bell - chemical free",each,20,0.06
+ABC Retailer,Vegetables,"Potato, Redskin - chemical free",case (25 lbs. bulk),3,1.755
+ABC Retailer,Vegetables,"Potato, Redskin - chemical free",lbs. bulk,75,0.07
+ABC Retailer,Vegetables,"Potato, Redskin - chemical free",case (12 x 2 lb. bags),3,1.685
+ABC Retailer,Vegetables,"Potato, Redskin - chemical free",2 lb. bags,37,0.14
+ABC Retailer,Vegetables,"Potato, White, Kennebec - chemical free",case (25 lbs. bulk),3,1.755
+ABC Retailer,Vegetables,"Potato, White, Kennebec - chemical free",lbs. bulk,75,0.07
+ABC Retailer,Vegetables,"Summer Squash, Yellow - chemical free",case (20 lbs. bulk),2,2.293
+ABC Retailer,Vegetables,"Summer Squash, Yellow - chemical free",lbs. bulk,40,0.115
+ABC Retailer,Vegetables,"Summer Squash, Zucchini - chemical free",case (20 lbs. bulk),3,2.293
+ABC Retailer,Vegetables,"Summer Squash, Zucchini - chemical free",lbs. bulk,70,0.115
+ABC Retailer,Vegetables,"Summer Squash, Zucchini - conventional",case (20 lbs. bulk),1,2.2
+ABC Retailer,Vegetables,"Summer Squash, Zucchini - conventional",lbs. bulk,20,0.11
+ABC Retailer,Vegetables,"Tomato, Cherry/Grape  (mixed colors) - conventional",lbs. bulk,4,0.281
+ABC Retailer,Vegetables,"Tomato, Hybrid, Red (seconds) - chemical free",case (25 lbs.),1,2.925
+ABC Retailer,Vegetables,"Tomato, Hybrid, Red (seconds) - chemical free",lbs. bulk,25,0.117
+XYZ Retailer,Vegetables,"Tomato, Hybrid, Red (seconds) - conventional",case (25 lbs.),2,2.925
+XYZ Retailer,Vegetables,"Tomato, Hybrid, Red (seconds) - conventional",lbs. bulk,50,0.117
+XYZ Retailer,Vegetables,"Tomato, Hybrid, Red - chemical free",case (25 lbs.),4,4.388
+XYZ Retailer,Vegetables,"Tomato, Hybrid, Red - chemical free",lbs. bulk,100,0.176
+XYZ Retailer,Vegetables,"Tomato, Hybrid, Red - conventional",case (25 lbs.),4,4.388
+XYZ Retailer,Vegetables,"Tomato, Hybrid, Red - conventional",lbs. bulk,100,0.176
+XYZ Retailer,Herbs,Apple Mint - chemical free,lbs. bulk,1,1.2
+XYZ Retailer,Herbs,Apple Mint - chemical free,oz. bulk,16,0.075
+XYZ Retailer,Herbs,Apple Mint - chemical free,4 oz. bunch,4,0.3
+XYZ Retailer,Herbs,Basil - chemical free,lbs. bulk,4,1.2
+XYZ Retailer,Herbs,Basil - chemical free,2 oz. bunches,32,0.15
+XYZ Retailer,Herbs,Basil - chemical free,oz. bulk,64,0.075
+XYZ Retailer,Herbs,Mint - chemical free,oz. bulk,32,0.075
+XYZ Retailer,Herbs,Mint - chemical free,lbs. bulk,2,1.2
+XYZ Retailer,Herbs,Mint - chemical free,4 oz. bunch,8,0.301
+XYZ Retailer,Meat,"Beans, French Green - conventional",lbs. bulk,50,0.205
+XYZ Retailer,Meat,"Beans, Green - conventional",case (24 lbs. bulk),2,5.054
+XYZ Retailer,Meat,"Beans, Green - conventional",1/2 case (12 x 1 lb. bags),1,2.527
+XYZ Retailer,Meat,"Beans, Green - conventional",1 lb. bags,20,0.211
+XYZ Retailer,Meat,100% Grass-Fed Ground Beef,Pound,100,0.633
+XYZ Retailer,Meat,100% Grass-Fed Ground Beef - 10lb,Pound,100,0.575
