@@ -15,13 +15,13 @@ for i in data_frame_1.index:
 print(sum_column_a)
 print(sum_column_b)
 
-#print(data_frame_1['column_a'].sum())
+print(data_frame_1['column_a'].sum())
 
 ####prints the sum of all the columns in a dataframe
-#print(data_frame_1.sum(axis = 0, skipna = True))
+print(data_frame_1.sum(axis = 0, skipna = True))
 
 ####will return a list of all the column headers
-#print(data_frame_1.columns)
+print(data_frame_1.columns)
 
 ####will return number of rows in a dataframe
 print(len("The number of rows is:" + data_frame_1.index))
@@ -30,17 +30,12 @@ print(len("The number of rows is:" + data_frame_1.index))
 print(len("The number of colums is:" + data_frame_1.columns))
 
 ####extracting data from a particular row in a dataframe
-####indexing of row starts from 0 and indexing of columns start from 0
-#print(data_frame_1.iloc[365])
 
 #adding a new column to a dataframe
 data_frame_1['multiplication_of_a_and_b'] = 0.0
 data_frame_1['multiplication_of_c_and_d'] = 0.0
 
 ####multiplying column values in a dataframe
-#for i in data_frame_1.index:
-#    data_frame_1.at[i, 'multiplication_of_a_and_b'] = data_frame_1.at[i, 'column_a'] * data_frame_1.at[i, 'column_b']
-#    data_frame_1.at[i, 'multiplication_of_c_and_d'] = data_frame_1.at[i, 'column_c'] * data_frame_1.at[i, 'column_d']
 
 data_frame_1['multiplication_of_a_and_b'] = data_frame_1['column_a'] * data_frame_1['column_b']
 data_frame_1['multiplication_of_c_and_d'] = data_frame_1['column_c'] * data_frame_1['column_d']
