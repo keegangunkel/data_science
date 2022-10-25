@@ -9,11 +9,14 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from cmath import sqrt
 from sklearn.model_selection import KFold
+from statistics import mean 
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import cross_val_predict
 
 
 path = '' 
-filename = 'midterm_iris_dataset.xlsx' #finding file
-df = pd.read_excel(path + filename) #reading in the excel sheet
+filename = 'experience_salary_data.csv' #finding file
+df = pd.read_csv(path + filename) #reading in the excel sheet
 
 
 years = df.iloc[:,[0]] #taking first column as x
@@ -22,7 +25,7 @@ x_train, x_test, y_train, y_test = train_test_split(years,salary, test_size=0.3,
 x_train2, x_test2, y_train2, y_test2 = train_test_split(years,salary, test_size=0.2, shuffle= True)#splitting into test and train data 80/20
 
 
-#PART 1(1) AND PART 1(2)
+######################### PART 1(1) AND PART 1(2) #########################
 
 #linear regression function
 def linear_regression(x, y):     
@@ -82,18 +85,19 @@ for x2 in x_test_array2: #same loop, but iterating through the 80/20 split
 
 def mean_squared_error_personal(y_test, prediction): #MSE definiton taking in two y values, (test and predicted)
     MSE_personal = 0
+    
     for y1,y2 in zip(y_test, prediction): #zip works perfect for parallel arrays to grab each val at the same spot
         MSE_personal += ((y1 - y2)**2) #MSE equation
 
 
     return MSE_personal/len(y_test)
 
-print("\nPersonal MSE for 70/30 split:", mean_squared_error_personal(y_test_array, predicted_list),'\n')
-print("\nPersonal MSE for 80/20 split:",mean_squared_error_personal(y_test_array2, predicted_list2),'\n')
+#print("\nPersonal MSE for 70/30 split:", mean_squared_error_personal(y_test_array, predicted_list),'\n')
+#print("\nPersonal MSE for 80/20 split:",mean_squared_error_personal(y_test_array2, predicted_list2),'\n')
 
 
 
-#PART 1(3)
+######################### PART 1(3) #########################
 model = LinearRegression()
 linear_model = model.fit(x_train,y_train) #fitting the model with the training set
 
@@ -109,7 +113,6 @@ model2 = LinearRegression()
 linear_model2 = model2.fit(x_train2,y_train2)
 
 linear_model_predict2 = linear_model2.predict(x_test2)
-
 MSE2 = mean_squared_error(y_test2, linear_model_predict2)
 RMSE2 = math.sqrt(MSE2)
 
@@ -126,11 +129,47 @@ print("\nPersonal RMSE for 70/30 split:", RMSE_personal,'\n')
 print("\nSciKit RMSE for a 80/20 split:", RMSE2, '\n')
 print("\nPersonal RMSE for 80/20 split:", RMSE_personal2 ,'\n')
 
-#PART 2(1)
+######################### PART 2(1) AND PART 2(2) #########################
 
 
+x_kfold = years.to_numpy()    #making arrays from the x and y from the df 
+y__kfold = salary.to_numpy()
+kf = KFold(n_splits=4) #k fold function for 4 splits
+kf.get_n_splits(x_kfold) # gets splits
 
+kfold_predicted = [] #instantiating lists to append to
+mse_kfold_list = []
+for train_index, test_index in kf.split(x_kfold): #iterates through each split
+    #print("TRAIN:", train_index,"\n", "TEST:", test_index)
+    x_train_kfold, x_test_kfold = x_kfold[train_index], x_kfold[test_index] #assigns the data in the index to a variable
+    y_train_kfold, y_test_kfold = y__kfold[train_index], y__kfold[test_index]
+    y_int3, slope3, reg_line3, r_val3 = linear_regression(x_train_kfold, y_train_kfold) #gets the linear regression
+    manual_prediction_kfold = predict(y_int3, slope3, test_index.tolist()[0]) # predicts the y
+    kfold_predicted.append(manual_prediction_kfold) # appends prediction to the prediction list
+    mse_kfold_list.append(mean_squared_error_personal(y_test_kfold, kfold_predicted))
+print(mse_kfold_list)
 
+mse3 = sum(mse_kfold_list)/4 #average of the mse list
+mse3 = mse3[0] # makes the average value an integer instead of array
 
+print("\nPersonal average of MSE when kfold is 4:",mse3,"\n")
 
+######################### PART 2(3) #########################
+mse_kfold_list2 = []
+for train_index, test_index in kf.split(x_kfold): #iterates through each split
+    #print("TRAIN:", train_index,"\n", "TEST:", test_index)
+    x_train_kfold, x_test_kfold = x_kfold[train_index], x_kfold[test_index] #assigns the data in the index to a variable
+    y_train_kfold, y_test_kfold = y__kfold[train_index], y__kfold[test_index]
+    model3 = LinearRegression()
+    linear_model3 = model3.fit(x_train_kfold,y_train_kfold)
+    linear_model_predict3 = linear_model3.predict(x_test_kfold)
+    mse_kfold_list2.append(mean_squared_error(y_test_kfold, linear_model_predict3)) #appends the mse to the mse list
+print("\nScikit average of MSE when kfold is 4:",mean(mse_kfold_list2),"\n")
+print(mse_kfold_list2)
+
+######################### PART (3) #########################
+
+path = '' 
+filename = 'exam_scores.xlsx' #finding file
+df2 = pd.read_excel(path + filename) #reading in the excel sheet
 
