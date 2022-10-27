@@ -41,7 +41,7 @@ dt = tree.DecisionTreeClassifier()
 dt = dt.fit(x, y)
 decision_tree = tree.plot_tree(dt)
                    
-#plt.show()
+plt.show()
 ##################### EVALUATION #####################
 #
 # It does not match the one we generated in class,
