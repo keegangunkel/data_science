@@ -1,8 +1,6 @@
-from matplotlib import test
+from audioop import reverse
 import pandas as pd
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 import numpy as np
 import math
 from sklearn.linear_model import LinearRegression
@@ -10,8 +8,10 @@ from sklearn.metrics import mean_squared_error
 from cmath import sqrt
 from sklearn.model_selection import KFold
 from statistics import mean 
-from sklearn.model_selection import cross_val_score
-from sklearn.model_selection import cross_val_predict
+from numpy import absolute
+import seaborn as sns
+from sklearn.metrics import r2_score
+import matplotlib.pyplot as plt
 
 
 path = '' 
@@ -92,11 +92,6 @@ def mean_squared_error_personal(y_test, prediction): #MSE definiton taking in tw
 
     return MSE_personal/len(y_test)
 
-#print("\nPersonal MSE for 70/30 split:", mean_squared_error_personal(y_test_array, predicted_list),'\n')
-#print("\nPersonal MSE for 80/20 split:",mean_squared_error_personal(y_test_array2, predicted_list2),'\n')
-
-
-
 ######################### PART 1(3) #########################
 model = LinearRegression()
 linear_model = model.fit(x_train,y_train) #fitting the model with the training set
@@ -134,42 +129,142 @@ print("\nPersonal RMSE for 80/20 split:", RMSE_personal2 ,'\n')
 
 x_kfold = years.to_numpy()    #making arrays from the x and y from the df 
 y__kfold = salary.to_numpy()
-kf = KFold(n_splits=4) #k fold function for 4 splits
+fold_amount = input("How many kfolds do you want? \n")
+fold_amount = int(fold_amount)
+kf = KFold(fold_amount) #k fold function for 4 splits
 kf.get_n_splits(x_kfold) # gets splits
 
-kfold_predicted = [] #instantiating lists to append to
+
 mse_kfold_list = []
 for train_index, test_index in kf.split(x_kfold): #iterates through each split
     #print("TRAIN:", train_index,"\n", "TEST:", test_index)
     x_train_kfold, x_test_kfold = x_kfold[train_index], x_kfold[test_index] #assigns the data in the index to a variable
     y_train_kfold, y_test_kfold = y__kfold[train_index], y__kfold[test_index]
     y_int3, slope3, reg_line3, r_val3 = linear_regression(x_train_kfold, y_train_kfold) #gets the linear regression
-    manual_prediction_kfold = predict(y_int3, slope3, test_index.tolist()[0]) # predicts the y
-    kfold_predicted.append(manual_prediction_kfold) # appends prediction to the prediction list
+    kfold_predicted = []  #instantiating lists to append to
+    for xt in x_test_kfold:
+        manual_prediction_kfold = predict(y_int3, slope3, xt) # predicts the y
+        kfold_predicted.append(manual_prediction_kfold) # appends prediction to the prediction list
     mse_kfold_list.append(mean_squared_error_personal(y_test_kfold, kfold_predicted))
-print(mse_kfold_list)
 
-mse3 = sum(mse_kfold_list)/4 #average of the mse list
+mse3 = sum(mse_kfold_list)/fold_amount #average of the mse list
 mse3 = mse3[0] # makes the average value an integer instead of array
 
-print("\nPersonal average of MSE when kfold is 4:",mse3,"\n")
+print("\nPersonal average of MSE when kfold is",fold_amount,":",mse3,"\n")
 
 ######################### PART 2(3) #########################
 mse_kfold_list2 = []
+kf = KFold(fold_amount)
 for train_index, test_index in kf.split(x_kfold): #iterates through each split
-    #print("TRAIN:", train_index,"\n", "TEST:", test_index)
+
     x_train_kfold, x_test_kfold = x_kfold[train_index], x_kfold[test_index] #assigns the data in the index to a variable
     y_train_kfold, y_test_kfold = y__kfold[train_index], y__kfold[test_index]
     model3 = LinearRegression()
     linear_model3 = model3.fit(x_train_kfold,y_train_kfold)
     linear_model_predict3 = linear_model3.predict(x_test_kfold)
     mse_kfold_list2.append(mean_squared_error(y_test_kfold, linear_model_predict3)) #appends the mse to the mse list
-print("\nScikit average of MSE when kfold is 4:",mean(mse_kfold_list2),"\n")
-print(mse_kfold_list2)
+print("\nScikit average of MSE when kfold is",fold_amount, ":",mean(mse_kfold_list2),"\n")
 
 ######################### PART (3) #########################
 
 path = '' 
 filename = 'exam_scores.xlsx' #finding file
 df2 = pd.read_excel(path + filename) #reading in the excel sheet
+x = df2[['EXAM1','EXAM2','EXAM3']]
+y = df2['FINAL']
 
+sns.pairplot(df2,
+             x_vars = ['EXAM1','EXAM2','EXAM3'],
+             y_vars = 'FINAL',
+             )
+plt.show()
+
+r2_scores_list = []
+model = LinearRegression()
+linear_model = model.fit(x,y)
+# have the model predict y for all inputs, so we can evaluate r2:
+linear_model_predict = linear_model.predict(x)
+prediction = r2_score(y, linear_model_predict)
+string = "EXAM1, EXAM2, EXAM 3"
+r2_scores_list.append((string,prediction))
+
+
+
+### EXAM 1 and 2 COMBINATION ###
+
+x = df2[['EXAM1','EXAM2']]
+# Create the model object and fit it to our x and y data:
+model= LinearRegression()
+linear_model = model.fit(x,y)
+# have the model predict y for all inputs, so we can evaluate r2:
+linear_model_predict = linear_model.predict(x)
+prediction = r2_score(y, linear_model_predict)
+string = "EXAM1, EXAM2"
+r2_scores_list.append((string,prediction))
+
+### EXAM 2 and 3 COMBINATION ###
+
+x = df2[['EXAM2','EXAM3']]
+# Create the model object and fit it to our x and y data:
+model= LinearRegression()
+linear_model = model.fit(x,y)
+# have the model predict y for all inputs, so we can evaluate r2:
+linear_model_predict = linear_model.predict(x)
+prediction = r2_score(y, linear_model_predict)
+string = "EXAM2, EXAM3"
+r2_scores_list.append((string,prediction))
+
+### EXAM 1 and 3 COMBINATION ###
+
+x = df2[['EXAM1','EXAM3']]
+# Create the model object and fit it to our x and y data:
+model= LinearRegression()
+linear_model = model.fit(x,y)
+# have the model predict y for all inputs, so we can evaluate r2:
+linear_model_predict = linear_model.predict(x)
+prediction = r2_score(y, linear_model_predict)
+string = "EXAM1, EXAM3"
+r2_scores_list.append((string,prediction))
+
+### EXAM 1  ###
+
+x = df2[['EXAM1']]
+# Create the model object and fit it to our x and y data:
+model= LinearRegression()
+linear_model = model.fit(x,y)
+# have the model predict y for all inputs, so we can evaluate r2:
+linear_model_predict = linear_model.predict(x)
+prediction = r2_score(y, linear_model_predict)
+string = "EXAM1"
+r2_scores_list.append((string,prediction))
+
+### EXAM 2  ###
+
+x = df2[['EXAM2']]
+# Create the model object and fit it to our x and y data:
+model= LinearRegression()
+linear_model = model.fit(x,y)
+# have the model predict y for all inputs, so we can evaluate r2:
+linear_model_predict = linear_model.predict(x)
+prediction = r2_score(y, linear_model_predict)
+string = "EXAM2"
+r2_scores_list.append((string,prediction))
+
+### EXAM 3  ###
+
+x = df2[['EXAM3']]
+# Create the model object and fit it to our x and y data:
+model= LinearRegression()
+linear_model = model.fit(x,y)
+# have the model predict y for all inputs, so we can evaluate r2:
+linear_model_predict = linear_model.predict(x)
+prediction = r2_score(y, linear_model_predict)
+string = "EXAM3"
+r2_scores_list.append((string,prediction))
+def sort_tuple(tup):
+    # key is set to sort using second element of
+    # sublist lambda has been used
+    tup.sort(key = lambda x: x[1], reverse=True)
+    return tup
+print("\nBest combinations sorted from best to worst:\n")
+print(sort_tuple(r2_scores_list))

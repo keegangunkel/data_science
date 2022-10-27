@@ -10,7 +10,7 @@ sns.pairplot(data_frame,
              x_vars = ['TV','radio','newspaper'],
              y_vars = 'sales',
              height = 7, aspect = 0.7)
-#plt.show()
+plt.show()
 
 # split our data frame into inputs (x) and output (y)
 x = data_frame [['TV','radio','newspaper']]
