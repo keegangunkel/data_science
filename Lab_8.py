@@ -2,6 +2,9 @@ import pandas as pd
 from sklearn import tree
 from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
+from sklearn import *
+from sklearn.tree import export_graphviz
+
 path = '' 
 filename = 'dataset_football_weather.xlsx' #finding file
 df2 = pd.read_excel(path + filename) #reading in the excel sheet
@@ -42,6 +45,7 @@ dt = dt.fit(x, y)
 decision_tree = tree.plot_tree(dt)
                    
 plt.show()
+plt.savefig('decision_tree.png')
 ##################### EVALUATION #####################
 #
 # It does not match the one we generated in class,

@@ -1,3 +1,8 @@
+import pandas as pd
+from sklearn import tree
+from matplotlib import pyplot as plt
+from sklearn.model_selection import train_test_split
+
 path = '' 
 filename = 'haberman.csv' #finding file
 df = pd.read_csv(path + filename) #reading in the excel sheet,
