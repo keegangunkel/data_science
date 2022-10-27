@@ -61,8 +61,32 @@ df = pd.read_csv(path + filename) #reading in the excel sheet,
 data = df.iloc[:,[0,1,2]] # x attributes
 survival = df.iloc[:,[3]] #y attributes
 x_train, x_test, y_train, y_test = train_test_split(data,survival, test_size=0.3, random_state=42) #splitting the data into train and test, random state ensures the same split each time
-#train_df = pd.concat([x_train, y_train], axis=1) #combining to make a train and tes df
-#test_df = pd.concat([x_test, y_test], axis=1)
-dt2 = tree.DecisionTreeClassifier()
+dt2 = tree.DecisionTreeClassifier(max_depth = 12, max_leaf_nodes=200,min_samples_leaf=1)
 dt2 = dt2.fit(data, survival)
-dt2 = dt2.score()
+dt_score_train = dt2.score(x_train, y_train)
+dt_score_test = dt2.score(x_test, y_test)
+print("Decision tree training set accuracy:","{:.2%}".format(dt_score_train))
+print("Decision tree test set accuracy:","{:.2%}".format(dt_score_test))
+
+
+
+
+
+##################### EVALUATION #####################
+#
+# I did not get the expected 100% accuracy for the
+# training set, the accuracy for the test set was 97.83%
+#
+# Accuracy[0] = patientAge, Accuraccy[1] = operationYear, Accuracy[2] = nodesDetected
+# 
+# Accuracy [0,1,2] = 97.83%
+# Accuracy [0,1] = 91.30%
+# Accuracy [0,2] = 88.04%
+# Accuracy [1,2] = 84.78%
+# Accuracy [2] = 76.09%
+# Accuracy [0] = 72.83%
+# Accuracy [1] = 71.74%
+#
+# The best combination (other than all 3) is, patientAge, operationYear
+#
+######################################################
