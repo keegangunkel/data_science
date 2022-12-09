@@ -7,11 +7,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 # Building block functions:
 
-path = '' 
-filename = 'clustering_dataset_01.csv' #finding file
-df = pd.read_csv(path + filename, header=None) #reading in the excel sheet
-data = df.iloc[:, [0,1]]
-data = data.values.tolist()
 
     
 def dist(x1, x2):
@@ -75,30 +70,36 @@ def variation(data, assignments, means):
         d = dist(pt, means[cluster])
         v += d**2
     return v
-varList = []
-for k in range(2,31):
-    kobj = KMeans(k)
-    assignments = kobj.train(data)
-    var = variation(data,assignments, kobj.means)
-    varList.append(var)
-xcoords = [pt[0]for pt in data]
-ycoords = [pt[1]for pt in data]
 
-print(var)
-#sns.scatterplot(x=xcoords, y = ycoords, hue=assignments)
-sns.lineplot(data=varList)
-plt.show()
-def kmeans(x, k):
-    # Use it like this?
-    km = KMeans(k = 10)
-    km.train(x)
-    # can print out km.means to see the fit means
-    # can call km.classify([1,2,3,4]) to get cluster index
+
+
+def kmeans(filename):
+    df = pd.read_csv(filename, header=None) #reading in the excel sheet
+    data = df.iloc[:, [0,1]]
+    data = data.values.tolist()
+    varList = []
+    for k in range(2,31):
+        kobj = KMeans(k)
+        assignments = kobj.train(data)
+        var = variation(data,assignments, kobj.means)
+        varList.append(var)
+        xcoords = [pt[0]for pt in data]
+        ycoords = [pt[1]for pt in data]
+        sns.set(rc = {"figure.figsize":(10,10)})
+        scatter = sns.scatterplot(x=xcoords, y = ycoords, hue= assignments, legend='full', palette='bright')
+        fig = scatter.get_figure()
+        fig.savefig(filename+'_cluster_graph_for_'+str(k)+'.png')
+        plt.clf()
+
+    line = sns.lineplot(data=varList)
+    figLine = line.get_figure()
+
+    figLine.savefig(filename+'_line_graph.png')
     
-    #The function should return a list the length of x that contains
-    # the cluster number (1 - k) for the corresponding x point
-    # TODO determine return value
 
+kmeans('clustering_dataset_01.csv')
+kmeans('clustering_dataset_02.csv')
+kmeans('clustering_dataset_03.csv')
 
 
 class DBSCAN:
