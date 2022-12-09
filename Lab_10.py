@@ -69,17 +69,17 @@ nameIDs3 = imdbFetchFilm("tt0415306")
 print("\nCast Ids: ",nameIDs3,'\n')
 
 ## Rob Schneider
-filmIds2 = imdbFetchPerson("nm0001705")
-print("\nFilm Ids: ",filmIds2,"\n")
+filmIds4 = imdbFetchPerson("nm0001705")
+print("\nFilm Ids: ",filmIds4,"\n")
 ### Anchorman
-nameIDs2 = imdbFetchFilm("tt0357413")
-print("\nCast Ids: ",nameIDs2,'\n')
+nameIDs4 = imdbFetchFilm("tt0357413")
+print("\nCast Ids: ",nameIDs4,'\n')
 
 ## Steve Carrell
-filmIds2 = imdbFetchPerson("nm0136797")
-print("\nFilm Ids: ",filmIds2,"\n")
+filmIds5 = imdbFetchPerson("nm0136797")
+print("\nFilm Ids: ",filmIds5,"\n")
 ## Water Boy
-nameIDs2 = imdbFetchFilm("tt0120484")
-print("\nCast Ids: ",nameIDs2,'\n')
+nameIDs5 = imdbFetchFilm("tt0120484")
+print("\nCast Ids: ",nameIDs5,'\n')
 
 
